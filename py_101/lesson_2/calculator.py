@@ -11,42 +11,50 @@ def invalid_num(num):
 
 print("Welcome!")
 
-# Ask user for first number
-first_num = input(prompt("What's the first number?\n"))
-
-while invalid_num(first_num):
-    print("Invalid number")
+another_calc = True
+while another_calc == True:
+    # Ask user for first number
     first_num = input(prompt("What's the first number?\n"))
 
-# Ask user for second number
-second_num = input(prompt("What's the second number?\n"))
+    while invalid_num(first_num):
+        print("Invalid number")
+        first_num = input(prompt("What's the first number?\n"))
 
-while invalid_num(second_num):
-    print("Invalid number")
+    # Ask user for second number
     second_num = input(prompt("What's the second number?\n"))
 
-print(f'{first_num} {second_num}')
-# Ask user for an operation type
-operation_type = input(prompt("""What type of operation?
-1) Add 2) Subtract 3) Multiply 4) Divide\n"""))
+    while invalid_num(second_num):
+        print("Invalid number")
+        second_num = input(prompt("What's the second number?\n"))
 
-while operation_type not in "1234":
-    print("Invalid operation")
+    print(f'{first_num} {second_num}')
+    # Ask user for an operation type
     operation_type = input(prompt("""What type of operation?
     1) Add 2) Subtract 3) Multiply 4) Divide\n"""))
 
-first_num = int(first_num)
-second_num = int(second_num)
-# Perform operation
-match operation_type:
-    case '1':
-        output = first_num + second_num
-    case '2':
-        output = first_num - second_num
-    case '3':
-        output = first_num * second_num
-    case '4':
-        output = first_num / second_num
+    while operation_type not in "1234":
+        print("Invalid operation")
+        operation_type = input(prompt("""What type of operation?
+        1) Add 2) Subtract 3) Multiply 4) Divide\n"""))
 
-# Print the result
-print(prompt(f"The result is: {output}"))
+    first_num = int(first_num)
+    second_num = int(second_num)
+    # Perform operation
+    match operation_type:
+        case '1':
+            output = first_num + second_num
+        case '2':
+            output = first_num - second_num
+        case '3':
+            output = first_num * second_num
+        case '4':
+            output = first_num / second_num
+
+    # Print the result
+    print(prompt(f"The result is: {output}"))
+
+    go_again = input("Would you like to input another calculation? (Y/N)\n")
+    if go_again == 'Y':
+        another_calc = True
+    else:
+        another_calc = False
